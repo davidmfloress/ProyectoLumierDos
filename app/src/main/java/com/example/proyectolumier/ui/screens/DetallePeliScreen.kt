@@ -53,11 +53,16 @@ import androidx.core.net.toUri
 import com.example.proyectolumier.ui.theme.NetflixRed
 
 
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+
 @Composable
 fun DetallePeliScreen(
     movie: Movie,
     onBackClick: () -> Unit,
     onThemeChange: (Boolean?) -> Unit,
+    isFavorito: Boolean = false,
+    onToggleFavorito: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val configuration = LocalConfiguration.current
@@ -91,6 +96,14 @@ fun DetallePeliScreen(
                     color = if (isLandscape) RojoCine else MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.weight(1f)
                 )
+
+                IconButton(onClick = onToggleFavorito) {
+                    Icon(
+                        imageVector = if (isFavorito) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        contentDescription = if (isFavorito) "Quitar favorito" else "Añadir favorito",
+                        tint = if (isFavorito) NetflixRed else MaterialTheme.colorScheme.onSurface
+                    )
+                }
 
                 Box {
                     IconButton(onClick = { showMenu = true }) {

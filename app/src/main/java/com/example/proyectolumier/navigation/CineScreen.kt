@@ -6,7 +6,11 @@ package com.example.proyectolumier.navigation
  */
 
 enum class CineScreen {
+    Login,
     Categories,
     Titles,
-    Details
+    Details,
+    Favoritos,
+    Geolocalizacion,
+    PeliculasOnline
 }

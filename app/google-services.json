@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "172566154184",
+    "project_id": "artspace-279b0a9a",
+    "storage_bucket": "artspace-279b0a9a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172566154184:android:23d6a1a039623d3d4b8efd",
+        "android_client_info": {
+          "package_name": "com.example.proyectolumier"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANuxJAb_iKaleGexdfEccJTRkPKDrMPpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
