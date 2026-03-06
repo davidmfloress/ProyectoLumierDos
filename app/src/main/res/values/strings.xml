@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ProyectoLumier</string>
+    <string name="app_title">Proyecto_Lumier</string>
+
+    <string name="categoria_comedia">Comedia</string>
+    <string name="categoria_accion">Acción</string>
+    <string name="categoria_amor">Amor</string>
+    <string name="categoria_terror">Terror</string>
+
+    <string name="terror_1_name">Hereditary</string>
+    <string name="terror_1_platforms_ids">3,5</string>
+    <string name="terror_1_trailer">7jMdzpZgqb4</string>
+    <string name="terror_1_desc">Una familia descubre secretos oscuros tras una tragedia familiar que desencadena eventos perturbadores.</string>
+    <string name="terror_1_date">2018</string>
+    <string name="terror_1_duration">127 min</string>
+    <string name="terror_1_age">16+</string>
+
+    <string name="terror_2_name">The Conjuring</string>
+    <string name="terror_2_platforms_ids">1,2</string>
+    <string name="terror_2_trailer">1kOlrEwTfco</string>
+    <string name="terror_2_desc">Investigadores paranormales enfrentan una presencia demoníaca en una granja aislada.</string>
+    <string name="terror_2_date">2013</string>
+    <string name="terror_2_duration">112 min</string>
+    <string name="terror_2_age">16+</string>
+
+    <string name="terror_3_name">Smile</string>
+    <string name="terror_3_platforms_ids">6</string>
+    <string name="terror_3_trailer">yhKiQGJop_8</string>
+    <string name="terror_3_desc">Una entidad maligna se manifiesta a través de sonrisas tras un incidente traumático.</string>
+    <string name="terror_3_date">2022</string>
+    <string name="terror_3_duration">115 min</string>
+    <string name="terror_3_age">16+</string>
+
+    <string name="terror_4_name">It</string>
+    <string name="terror_4_platforms_ids">2</string>
+    <string name="terror_4_trailer">_oBZ_zTz0Nw</string>
+    <string name="terror_4_desc">Un payaso aterrador acecha a un grupo de niños en el pueblo de Derry.</string>
+    <string name="terror_4_date">2017</string>
+    <string name="terror_4_duration">135 min</string>
+    <string name="terror_4_age">16+</string>
+
+    <string name="terror_5_name">The Nun</string>
+    <string name="terror_5_platforms_ids">3</string>
+    <string name="terror_5_trailer">pzD9zGcUNrw</string>
+    <string name="terror_5_desc">Una presencia demoníaca aterroriza un convento en Rumanía.</string>
+    <string name="terror_5_date">2018</string>
+    <string name="terror_5_duration">96 min</string>
+    <string name="terror_5_age">16+</string>
+
+    <string name="terror_6_name">Insidious</string>
+    <string name="terror_6_platforms_ids">1</string>
+    <string name="terror_6_trailer">FRW3K0LlsD0</string>
+    <string name="terror_6_desc">Un niño queda atrapado en el mundo astral mientras entidates oscuras intentan poseerlo.</string>
+    <string name="terror_6_date">2010</string>
+    <string name="terror_6_duration">103 min</string>
+    <string name="terror_6_age">12+</string>
+
+    <string name="terror_7_name">Midsommar</string>
+    <string name="terror_7_platforms_ids">5</string>
+    <string name="terror_7_trailer">3LPZ4agE75Y</string>
+    <string name="terror_7_desc">Un festival pagano se convierte en pesadilla a plena luz del día en Suecia.</string>
+    <string name="terror_7_date">2019</string>
+    <string name="terror_7_duration">147 min</string>
+    <string name="terror_7_age">18+</string>
+
+    <string name="terror_8_name">A Quiet Place</string>
+    <string name="terror_8_platforms_ids">1</string>
+    <string name="terror_8_trailer">WR7cc5t7tv8</string>
+    <string name="terror_8_desc">Criaturas cazan a quienes hacen ruido en un mundo devastado.</string>
+    <string name="terror_8_date">2018</string>
+    <string name="terror_8_duration">90 min</string>
+    <string name="terror_8_age">12+</string>
+
+    <string name="terror_9_name">The Babadook</string>
+    <string name="terror_9_platforms_ids">3</string>
+    <string name="terror_9_trailer">29qrvJMui0c</string>
+    <string name="terror_9_desc">Una madre y su hijo enfrentan una entidad oscura que surge de un libro infantil.</string>
+    <string name="terror_9_date">2014</string>
+    <string name="terror_9_duration">94 min</string>
+    <string name="terror_9_age">16+</string>
+
+    <string name="terror_10_name">Get Out</string>
+    <string name="terror_10_platforms_ids">1</string>
+    <string name="terror_10_trailer">DzfpyUB60YY</string>
+    <string name="terror_10_desc">Un fin de semana se convierte en una pesadilla racial perturbadora.</string>
+    <string name="terror_10_date">2017</string>
+    <string name="terror_10_duration">104 min</string>
+    <string name="terror_10_age">16+</string>
+
+    <string name="romcom_1_name">Anyone But You</string>
+    <string name="romcom_1_platforms_ids">7</string>
+    <string name="romcom_1_trailer">UtjH6Sk7Gxs</string>
+    <string name="romcom_1_desc">Una relación falsa se vuelve real durante una boda en Australia.</string>
+    <string name="romcom_1_date">2023</string>
+    <string name="romcom_1_duration">103 min</string>
+    <string name="romcom_1_age">12+</string>
+
+    <string name="romcom_2_name">Crazy Rich Asians</string>
+    <string name="romcom_2_platforms_ids">1</string>
+    <string name="romcom_2_trailer">ZQ-YX-5bAs0</string>
+    <string name="romcom_2_desc">Rachel descubre que la familia de su novio es una de las más ricas de Asia.</string>
+    <string name="romcom_2_date">2018</string>
+    <string name="romcom_2_duration">120 min</string>
+    <string name="romcom_2_age">TP</string>
+
+    <string name="romcom_3_name">Love, Simon</string>
+    <string name="romcom_3_platforms_ids">4</string>
+    <string name="romcom_3_trailer">E0cbWdlQg_8</string>
+    <string name="romcom_3_desc">Un joven busca el amor y aceptarse a sí mismo mientras busca a un admirador secreto.</string>
+    <string name="romcom_3_date">2018</string>
+    <string name="romcom_3_duration">110 min</string>
+    <string name="romcom_3_age">TP</string>
+
+    <string name="romcom_4_name">To All the Boys I ve Loved Before</string>
+    <string name="romcom_4_platforms_ids">1</string>
+    <string name="romcom_4_trailer">555oiY9RWM4</string>
+    <string name="romcom_4_desc">Cartas de amor secretas salen a la luz y cambian la vida de Lara Jean.</string>
+    <string name="romcom_4_date">2018</string>
+    <string name="romcom_4_duration">99 min</string>
+    <string name="romcom_4_age">TP</string>
+
+    <string name="romcom_5_name">The Big Sick</string>
+    <string name="romcom_5_platforms_ids">3</string>
+    <string name="romcom_5_trailer">jcD0Daqc3Yw</string>
+    <string name="romcom_5_desc">Amor, diferencias culturales y una enfermedad inesperada se entrelazan.</string>
+    <string name="romcom_5_date">2017</string>
+    <string name="romcom_5_duration">120 min</string>
+    <string name="romcom_5_age">12+</string>
+
+    <string name="romcom_6_name">About Time</string>
+    <string name="romcom_6_platforms_ids">1</string>
+    <string name="romcom_6_trailer">7OIFdWk83no</string>
+    <string name="romcom_6_desc">Un joven descubre que puede viajar en el tiempo e intenta mejorar su vida amorosa.</string>
+    <string name="romcom_6_date">2013</string>
+    <string name="romcom_6_duration">123 min</string>
+    <string name="romcom_6_age">TP</string>
+
+    <string name="romcom_7_name">La La Land</string>
+    <string name="romcom_7_platforms_ids">3</string>
+    <string name="romcom_7_trailer">45s24h98iOc</string>
+    <string name="romcom_7_desc">Amor y sueños se cruzan en Los Ángeles entre una actriz y un músico.</string>
+    <string name="romcom_7_date">2016</string>
+    <string name="romcom_7_duration">128 min</string>
+    <string name="romcom_7_age">TP</string>
+
+    <string name="romcom_8_name">Notting Hill</string>
+    <string name="romcom_8_platforms_ids">1</string>
+    <string name="romcom_8_trailer">mLX6319U7qA</string>
+    <string name="romcom_8_desc">Un librero sencillo se enamora de la actriz más famosa del mundo.</string>
+    <string name="romcom_8_date">1999</string>
+    <string name="romcom_8_duration">124 min</string>
+    <string name="romcom_8_age">TP</string>
+
+    <string name="romcom_9_name">Palm Springs</string>
+    <string name="romcom_9_platforms_ids">3</string>
+    <string name="romcom_9_trailer">CpBLtXduh_k</string>
+    <string name="romcom_9_desc">Dos desconocidos quedan atrapados en un bucle temporal durante una boda.</string>
+    <string name="romcom_9_date">2020</string>
+    <string name="romcom_9_duration">90 min</string>
+    <string name="romcom_9_age">12+</string>
+
+    <string name="romcom_10_name">The Proposal</string>
+    <string name="romcom_10_platforms_ids">4</string>
+    <string name="romcom_10_trailer">jHraHCjK094</string>
+    <string name="romcom_10_desc">Una boda falsa para evitar la deportación de una jefa exigente.</string>
+    <string name="romcom_10_date">2009</string>
+    <string name="romcom_10_duration">108 min</string>
+    <string name="romcom_10_age">TP</string>
+
+    <string name="comedy_1_name">Free Guy</string>
+    <string name="comedy_1_platforms_ids">4</string>
+    <string name="comedy_1_trailer">VMlmcUelw-c</string>
+    <string name="comedy_1_desc">Un cajero de banco descubre que es un personaje secundario en un videojuego.</string>
+    <string name="comedy_1_date">2021</string>
+    <string name="comedy_1_duration">115 min</string>
+    <string name="comedy_1_age">12+</string>
+
+    <string name="comedy_2_name">Barbie</string>
+    <string name="comedy_2_platforms_ids">2</string>
+    <string name="comedy_2_trailer">pBk4NYhWNMM</string>
+    <string name="comedy_2_desc">Barbie sufre una crisis existencial y explora el mundo real.</string>
+    <string name="comedy_2_date">2023</string>
+    <string name="comedy_2_duration">114 min</string>
+    <string name="comedy_2_age">TP</string>
+
+    <string name="comedy_3_name">The Hangover</string>
+    <string name="comedy_3_platforms_ids">1</string>
+    <string name="comedy_3_trailer">tcdUhdOlz9M</string>
+    <string name="comedy_3_desc">Tres amigos despiertan tras una despedida de soltero sin rastro del novio.</string>
+    <string name="comedy_3_date">2009</string>
+    <string name="comedy_3_duration">100 min</string>
+    <string name="comedy_3_age">16+</string>
+
+    <string name="comedy_4_name">Superbad</string>
+    <string name="comedy_4_platforms_ids">1</string>
+    <string name="comedy_4_trailer">4eaZ_48ZYog</string>
+    <string name="comedy_4_desc">Dos amigos con poca suerte social buscan alcohol para una fiesta épica.</string>
+    <string name="comedy_4_date">2007</string>
+    <string name="comedy_4_duration">113 min</string>
+    <string name="comedy_4_age">16+</string>
+
+    <string name="comedy_5_name">We are the Millers</string>
+    <string name="comedy_5_platforms_ids">3</string>
+    <string name="comedy_5_trailer">RVWgi8UBAxk</string>
+    <string name="comedy_5_desc">Un traficante crea una familia falsa para cruzar un cargamento por la frontera.</string>
+    <string name="comedy_5_date">2013</string>
+    <string name="comedy_5_duration">110 min</string>
+    <string name="comedy_5_age">16+</string>
+
+    <string name="comedy_6_name">Step Brothers</string>
+    <string name="comedy_6_platforms_ids">1</string>
+    <string name="comedy_6_trailer">S96t3DSOPFs</string>
+    <string name="comedy_6_desc">Dos adultos inmaduros se ven obligados a vivir juntos cuando sus padres se casan.</string>
+    <string name="comedy_6_date">2008</string>
+    <string name="comedy_6_duration">98 min</string>
+    <string name="comedy_6_age">12+</string>
+
+    <string name="comedy_7_name">Yes Man</string>
+    <string name="comedy_7_platforms_ids">1</string>
+    <string name="comedy_7_trailer">dDh1l3qVNoY</string>
+    <string name="comedy_7_desc">Decir sí a absolutamente todo durante un año cambia la vida de un hombre gris.</string>
+    <string name="comedy_7_date">2008</string>
+    <string name="comedy_7_duration">104 min</string>
+    <string name="comedy_7_age">TP</string>
+
+    <string name="comedy_8_name">21 Jump Street</string>
+    <string name="comedy_8_platforms_ids">3</string>
+    <string name="comedy_8_trailer">Oj55KinxZx4</string>
+    <string name="comedy_8_desc">Dos policías mediocres deben infiltrarse en una escuela secundaria.</string>
+    <string name="comedy_8_date">2012</string>
+    <string name="comedy_8_duration">109 min</string>
+    <string name="comedy_8_age">16+</string>
+
+    <string name="comedy_9_name">Deadpool</string>
+    <string name="comedy_9_platforms_ids">4</string>
+    <string name="comedy_9_trailer">QyU7glpHg-c</string>
+    <string name="comedy_9_desc">Un antihéroe irreverente busca venganza contra el hombre que casi destruye su vida.</string>
+    <string name="comedy_9_date">2016</string>
+    <string name="comedy_9_duration">108 min</string>
+    <string name="comedy_9_age">18+</string>
+
+    <string name="comedy_10_name">The Mask</string>
+    <string name="comedy_10_platforms_ids">1</string>
+    <string name="comedy_10_trailer">LZl69yk5lEY</string>
+    <string name="comedy_10_desc">Una máscara mágica convierte a un hombre tímido en un dibujo animado viviente.</string>
+    <string name="comedy_10_date">1994</string>
+    <string name="comedy_10_duration">101 min</string>
+    <string name="comedy_10_age">7+</string>
+
+    <string name="action_1_name">John Wick</string>
+    <string name="action_1_platforms_ids">3</string>
+    <string name="action_1_trailer">C0BMx-qxsP4</string>
+    <string name="action_1_desc">Un asesino retirado vuelve a la acción para vengar la muerte de su perro.</string>
+    <string name="action_1_date">2014</string>
+    <string name="action_1_duration">101 min</string>
+    <string name="action_1_age">18+</string>
+
+    <string name="action_2_name">Mad Max: Fury Road</string>
+    <string name="action_2_platforms_ids">2</string>
+    <string name="action_2_trailer">hEJnMQG9ev8</string>
+    <string name="action_2_desc">Caos y persecuciones a muerte en un futuro desértico postapocalíptico.</string>
+    <string name="action_2_date">2015</string>
+    <string name="action_2_duration">120 min</string>
+    <string name="action_2_age">16+</string>
+
+    <string name="action_3_name">Avengers: Endgame</string>
+    <string name="action_3_platforms_ids">4</string>
+    <string name="action_3_trailer">TcMBFSGVi1c</string>
+    <string name="action_3_desc">Los héroes más poderosos de la Tierra se unen para la batalla final contra Thanos.</string>
+    <string name="action_3_date">2019</string>
+    <string name="action_3_duration">181 min</string>
+    <string name="action_3_age">12+</string>
+
+    <string name="action_4_name">The Dark Knight</string>
+    <string name="action_4_platforms_ids">2</string>
+    <string name="action_4_trailer">EXeTwQWrcwY</string>
+    <string name="action_4_desc">Batman enfrenta su mayor desafío moral contra un anarquista llamado Joker.</string>
+    <string name="action_4_date">2008</string>
+    <string name="action_4_duration">152 min</string>
+    <string name="action_4_age">12+</string>
+
+    <string name="action_5_name">Mission Impossible: Fallout</string>
+    <string name="action_5_platforms_ids">3</string>
+    <string name="action_5_trailer">wb49-oV0F78</string>
+    <string name="action_5_desc">Ethan Hunt debe recuperar plutonio robado antes de que sea demasiado tarde.</string>
+    <string name="action_5_date">2018</string>
+    <string name="action_5_duration">147 min</string>
+    <string name="action_5_age">12+</string>
+
+    <string name="action_6_name">Gladiator</string>
+    <string name="action_6_platforms_ids">1,2</string>
+    <string name="action_6_trailer">P5ieIbInFpg</string>
+    <string name="action_6_desc">Venganza y honor en la antigua Roma a través de los ojos de un general traicionado.</string>
+    <string name="action_6_date">2000</string>
+    <string name="action_6_duration">155 min</string>
+    <string name="action_6_age">16+</string>
+
+    <string name="action_7_name">Top Gun: Maverick</string>
+    <string name="action_7_platforms_ids">6</string>
+    <string name="action_7_trailer">qSqVVswa420</string>
+    <string name="action_7_desc">Maverick regresa para entrenar a una nueva generación de pilotos de élite.</string>
+    <string name="action_7_date">2022</string>
+    <string name="action_7_duration">130 min</string>
+    <string name="action_7_age">TP</string>
+
+    <string name="action_8_name">The Matrix</string>
+    <string name="action_8_platforms_ids">2</string>
+    <string name="action_8_trailer">vKQi3bBA1y8</string>
+    <string name="action_8_desc">Un hacker descubre que la realidad es una simulación controlada por máquinas.</string>
+    <string name="action_8_date">1999</string>
+    <string name="action_8_duration">136 min</string>
+    <string name="action_8_age">12+</string>
+
+    <string name="action_9_name">Extraction</string>
+    <string name="action_9_platforms_ids">1</string>
+    <string name="action_9_trailer">L6P3nI6VnlY</string>
+    <string name="action_9_desc">Un mercenario en una misión suicida para rescatar al hijo de un capo de la droga.</string>
+    <string name="action_9_date">2020</string>
+    <string name="action_9_duration">116 min</string>
+    <string name="action_9_age">18+</string>
+
+    <string name="action_10_name">Die Hard</string>
+    <string name="action_10_platforms_ids">4</string>
+    <string name="action_10_trailer">jaJuwKCmJbY</string>
+    <string name="action_10_desc">Un policía solo contra un grupo de terroristas en un rascacielos durante Navidad.</string>
+    <string name="action_10_date">1988</string>
+    <string name="action_10_duration">132 min</string>
+    <string name="action_10_age">16+</string>
+
+
+</resources>
