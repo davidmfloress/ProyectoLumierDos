@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.proyectolumier" />
-                  <option name="mobileSdkAppId" value="1:TU_PROJECT_NUMBER:android:XXXXXXXXXXXXXXXX" />
-                  <option name="projectId" value="tu-proyecto-firebase" />
-                  <option name="projectNumber" value="TU_PROJECT_NUMBER" />
+                  <option name="mobileSdkAppId" value="1:172566154184:android:23d6a1a039623d3d4b8efd" />
+                  <option name="projectId" value="artspace-279b0a9a" />
+                  <option name="projectNumber" value="172566154184" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

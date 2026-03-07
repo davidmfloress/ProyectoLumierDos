@@ -1,19 +1,19 @@
 package com.example.proyectolumier.ui.screens
 
 /**
- * Pantalla de identificación de usuario mediante Firebase Authentication.
- * Permite registrarse o iniciar sesión con email y contraseña.
- *
- * @author: David Muñoz Flores
- * @author: Marco Lodeiro Ruiz De La Hermosa
+@author: David Muñoz Flores
+@author: Marco Lodeiro Ruiz De La Hermosa
  */
 
+import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -24,6 +24,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -47,6 +48,8 @@ fun LoginScreen(
 ) {
     val auth = remember { FirebaseAuth.getInstance() }
     val scope = rememberCoroutineScope()
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -55,47 +58,12 @@ fun LoginScreen(
     var isLoading by remember { mutableStateOf(false) }
     var errorMsg by remember { mutableStateOf<String?>(null) }
 
-    // Si ya hay sesión activa, pasar directamente
     LaunchedEffect(Unit) {
         auth.currentUser?.let { onLoginSuccess(it.email ?: "") }
     }
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        // Logo
-        val logoRes = if (isDarkMode) R.drawable.logolumiernigga else R.drawable.logolumiernormal
-        Image(
-            painter = painterResource(id = logoRes),
-            contentDescription = "Logo Lumier",
-            modifier = Modifier.size(120.dp),
-            contentScale = ContentScale.Fit
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Text(
-            text = "LUMIER",
-            fontFamily = BebasNeue,
-            fontSize = 48.sp,
-            fontWeight = FontWeight.Normal,
-            letterSpacing = 4.sp,
-            color = NetflixRed
-        )
-
-        Text(
-            text = if (isRegistro) "Crear cuenta" else "Iniciar sesión",
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
-            modifier = Modifier.padding(bottom = 32.dp)
-        )
-
-        // Campo email
+    // Contenido del formulario como lambda reutilizable
+    val formContent: @Composable ColumnScope.() -> Unit = {
         OutlinedTextField(
             value = email,
             onValueChange = { email = it; errorMsg = null },
@@ -113,7 +81,6 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Campo contraseña
         OutlinedTextField(
             value = password,
             onValueChange = { password = it; errorMsg = null },
@@ -140,7 +107,6 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Mensaje de error
         AnimatedVisibility(visible = errorMsg != null) {
             Text(
                 text = errorMsg ?: "",
@@ -153,26 +119,16 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Botón principal
         Button(
             onClick = {
-                if (email.isBlank() || password.isBlank()) {
-                    errorMsg = "Completa todos los campos"
-                    return@Button
-                }
-                if (password.length < 6) {
-                    errorMsg = "La contraseña debe tener al menos 6 caracteres"
-                    return@Button
-                }
+                if (email.isBlank() || password.isBlank()) { errorMsg = "Completa todos los campos"; return@Button }
+                if (password.length < 6) { errorMsg = "La contraseña debe tener al menos 6 caracteres"; return@Button }
                 scope.launch {
                     isLoading = true
                     errorMsg = null
                     try {
-                        if (isRegistro) {
-                            auth.createUserWithEmailAndPassword(email.trim(), password).await()
-                        } else {
-                            auth.signInWithEmailAndPassword(email.trim(), password).await()
-                        }
+                        if (isRegistro) auth.createUserWithEmailAndPassword(email.trim(), password).await()
+                        else auth.signInWithEmailAndPassword(email.trim(), password).await()
                         onLoginSuccess(email.trim())
                     } catch (e: Exception) {
                         errorMsg = when {
@@ -181,9 +137,7 @@ fun LoginScreen(
                             e.message?.contains("no user") == true -> "Usuario no encontrado"
                             else -> "Error: ${e.message}"
                         }
-                    } finally {
-                        isLoading = false
-                    }
+                    } finally { isLoading = false }
                 }
             },
             modifier = Modifier.fillMaxWidth().height(50.dp),
@@ -191,30 +145,90 @@ fun LoginScreen(
             colors = ButtonDefaults.buttonColors(containerColor = NetflixRed),
             enabled = !isLoading
         ) {
-            if (isLoading) {
-                CircularProgressIndicator(
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.size(22.dp),
-                    strokeWidth = 2.dp
-                )
-            } else {
-                Text(
-                    text = if (isRegistro) "Crear cuenta" else "Entrar",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
-                )
-            }
+            if (isLoading) CircularProgressIndicator(color = MaterialTheme.colorScheme.onPrimary, modifier = Modifier.size(22.dp), strokeWidth = 2.dp)
+            else Text(text = if (isRegistro) "Crear cuenta" else "Entrar", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Toggle registro / login
         TextButton(onClick = { isRegistro = !isRegistro; errorMsg = null }) {
             Text(
                 text = if (isRegistro) "¿Ya tienes cuenta? Inicia sesión" else "¿No tienes cuenta? Regístrate",
                 color = NetflixRed,
                 style = MaterialTheme.typography.bodyMedium
             )
+        }
+    }
+
+    val logoRes = if (isDarkMode) R.drawable.logolumiernigga else R.drawable.logolumiernormal
+
+    if (isLandscape) {
+        // LANDSCAPE: logo a la izquierda, formulario a la derecha con scroll
+        Row(
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(horizontal = 32.dp, vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(32.dp)
+        ) {
+            // Columna izquierda: logo + título
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Image(
+                    painter = painterResource(id = logoRes),
+                    contentDescription = "Logo Lumier",
+                    modifier = Modifier.size(80.dp),
+                    contentScale = ContentScale.Fit
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(text = "LUMIER", fontFamily = BebasNeue, fontSize = 36.sp, fontWeight = FontWeight.Normal, letterSpacing = 4.sp, color = NetflixRed)
+                Text(
+                    text = if (isRegistro) "Crear cuenta" else "Iniciar sesión",
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
+                )
+            }
+
+            // Columna derecha: formulario con scroll
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                formContent()
+            }
+        }
+    } else {
+        // PORTRAIT: layout vertical clásico con scroll
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .verticalScroll(rememberScrollState())
+                .padding(32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Image(
+                painter = painterResource(id = logoRes),
+                contentDescription = "Logo Lumier",
+                modifier = Modifier.size(120.dp),
+                contentScale = ContentScale.Fit
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = "LUMIER", fontFamily = BebasNeue, fontSize = 48.sp, fontWeight = FontWeight.Normal, letterSpacing = 4.sp, color = NetflixRed)
+            Text(
+                text = if (isRegistro) "Crear cuenta" else "Iniciar sesión",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
+                modifier = Modifier.padding(bottom = 32.dp)
+            )
+            formContent()
         }
     }
 }

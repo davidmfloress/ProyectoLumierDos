@@ -27,4 +27,8 @@ data class CineUiState(
     // auth
     val usuarioEmail: String? = null,
     val isLoggedIn: Boolean = false,
+    // geolocalización — persiste durante la sesión aunque se rote la pantalla
+    val geoLatitud: Double? = null,
+    val geoLongitud: Double? = null,
 )
+// Nota: añadir estos campos al data class CineUiState existente

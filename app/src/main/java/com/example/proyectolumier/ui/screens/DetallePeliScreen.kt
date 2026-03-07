@@ -52,7 +52,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.net.toUri
 import com.example.proyectolumier.ui.theme.NetflixRed
 
-
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 
@@ -76,7 +75,6 @@ fun DetallePeliScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-
         Surface(
             modifier = Modifier.fillMaxWidth(),
             color = MaterialTheme.colorScheme.surface,
@@ -96,7 +94,6 @@ fun DetallePeliScreen(
                     color = if (isLandscape) RojoCine else MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.weight(1f)
                 )
-
                 IconButton(onClick = onToggleFavorito) {
                     Icon(
                         imageVector = if (isFavorito) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
@@ -104,60 +101,58 @@ fun DetallePeliScreen(
                         tint = if (isFavorito) NetflixRed else MaterialTheme.colorScheme.onSurface
                     )
                 }
-
                 Box {
                     IconButton(onClick = { showMenu = true }) {
                         Icon(Icons.Default.MoreVert, contentDescription = "Opciones")
                     }
-                    DropdownMenu(
-                        expanded = showMenu,
-                        onDismissRequest = { showMenu = false }
-                    ) {
-                        Text(
-                            "Apariencia",
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = NetflixRed
-                        )
-                        DropdownMenuItem(
-                            text = { Text("Modo Claro") },
-                            leadingIcon = { Icon(Icons.Default.LightMode, null) },
-                            onClick = { onThemeChange(false); showMenu = false }
-                        )
-                        DropdownMenuItem(
-                            text = { Text("Modo Oscuro") },
-                            leadingIcon = { Icon(Icons.Default.DarkMode, null) },
-                            onClick = { onThemeChange(true); showMenu = false }
-                        )
-                        DropdownMenuItem(
-                            text = { Text("Sistema") },
-                            leadingIcon = { Icon(Icons.Default.SettingsSuggest, null) },
-                            onClick = { onThemeChange(null); showMenu = false }
-                        )
+                    DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
+                        Text("Apariencia", modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp), style = MaterialTheme.typography.labelSmall, color = NetflixRed)
+                        DropdownMenuItem(text = { Text("Modo Claro") }, leadingIcon = { Icon(Icons.Default.LightMode, null) }, onClick = { onThemeChange(false); showMenu = false })
+                        DropdownMenuItem(text = { Text("Modo Oscuro") }, leadingIcon = { Icon(Icons.Default.DarkMode, null) }, onClick = { onThemeChange(true); showMenu = false })
+                        DropdownMenuItem(text = { Text("Sistema") }, leadingIcon = { Icon(Icons.Default.SettingsSuggest, null) }, onClick = { onThemeChange(null); showMenu = false })
                     }
                 }
             }
         }
 
         if (isLandscape) {
-            Row(
-                modifier = Modifier.fillMaxSize().padding(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(20.dp)
+            BoxWithConstraints(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
-                Box(
-                    modifier = Modifier.weight(1.2f).aspectRatio(16f / 9f)
-                        .border(2.dp, RojoCine).align(Alignment.CenterVertically)
-                ) {
-                    YoutubePlayer(movie.trailerUrlRes, Modifier.fillMaxSize())
-                }
+                // La altura manda: el vídeo nunca supera el 90% de la altura disponible
+                // El ancho se deriva de la altura manteniendo 16:9 exacto
+                val videoHeight = maxHeight * 0.90f
+                val videoWidth  = videoHeight * 16f / 9f
 
-                Column(modifier = Modifier.weight(1f).verticalScroll(rememberScrollState())) {
-                    Text(text = stringResource(movie.title), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-                    HorizontalDivider(Modifier.padding(vertical = 8.dp).width(40.dp), color = RojoCine)
-                    Text(text = stringResource(movie.description), style = MaterialTheme.typography.bodyMedium)
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text("DÓNDE VER:", color = VerdeAzulado, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                    PlatformList(movie.platformsIdRes)
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .width(videoWidth)
+                            .height(videoHeight)
+                            .border(2.dp, RojoCine)
+                    ) {
+                        YoutubePlayer(movie.trailerUrlRes, Modifier.fillMaxSize())
+                    }
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .verticalScroll(rememberScrollState()),
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(text = stringResource(movie.title), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+                        HorizontalDivider(Modifier.padding(vertical = 8.dp).width(40.dp), color = RojoCine)
+                        Text(text = stringResource(movie.description), style = MaterialTheme.typography.bodyMedium)
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text("DÓNDE VER:", color = VerdeAzulado, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                        PlatformList(movie.platformsIdRes)
+                    }
                 }
             }
         } else {
@@ -165,7 +160,6 @@ fun DetallePeliScreen(
                 Box(modifier = Modifier.fillMaxWidth().padding(16.dp).aspectRatio(16f / 9f).border(2.dp, RojoCine)) {
                     YoutubePlayer(movie.trailerUrlRes, Modifier.fillMaxSize())
                 }
-
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -173,21 +167,11 @@ fun DetallePeliScreen(
                 ) {
                     Text(text = stringResource(id = movie.title), modifier = Modifier.weight(1f), style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Bold)
                     IconButton(onClick = { isDetailVisibleByClick = !isDetailVisibleByClick }) {
-                        Icon(
-                            imageVector = if (isDetailVisibleByClick) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                            contentDescription = "Ver más",
-                            tint = RojoCine
-                        )
+                        Icon(imageVector = if (isDetailVisibleByClick) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown, contentDescription = "Ver más", tint = RojoCine)
                     }
                 }
-
                 HorizontalDivider(modifier = Modifier.padding(start = 20.dp, top = 8.dp, bottom = 8.dp).width(50.dp), color = RojoCine)
-
-                AnimatedVisibility(
-                    visible = isContentVisible,
-                    enter = expandVertically() + fadeIn(),
-                    exit = shrinkVertically() + fadeOut()
-                ) {
+                AnimatedVisibility(visible = isContentVisible, enter = expandVertically() + fadeIn(), exit = shrinkVertically() + fadeOut()) {
                     Column(modifier = Modifier.padding(horizontal = 20.dp)) {
                         Text(text = stringResource(id = movie.description), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f))
                         Spacer(modifier = Modifier.height(24.dp))
@@ -207,13 +191,11 @@ fun YoutubePlayer(
     modifier: Modifier = Modifier
 ) {
     val videoId = stringResource(id = youtubeVideoIdRes)
-
     AndroidView(
         modifier = modifier,
         factory = { context ->
             YouTubePlayerView(context).apply {
                 (context as? LifecycleOwner)?.lifecycle?.addObserver(this)
-
                 addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
                     override fun onReady(youTubePlayer: YouTubePlayer) {
                         youTubePlayer.cueVideo(videoId, 0f)
@@ -228,33 +210,24 @@ fun YoutubePlayer(
 fun PlatformList(platformsIdRes: Int) {
     val context = LocalContext.current
     val idsString = stringResource(id = platformsIdRes)
-
     val platformData = mapOf(
         "1" to Pair("Netflix", "https://www.netflix.com"),
-        "2" to Pair("HBO Max", "https://www.max.com"), // Corregido: antes tenía un 'to' extra
+        "2" to Pair("HBO Max", "https://www.max.com"),
         "3" to Pair("Amazon Prime", "https://www.primevideo.com"),
         "4" to Pair("Disney+", "https://www.disneyplus.com"),
         "5" to Pair("Apple TV", "https://tv.apple.com"),
         "6" to Pair("Paramount+", "https://www.paramountplus.com"),
         "7" to Pair("Cines / Otros", "https://www.google.com/search?q=cartelera+cine")
     )
-
     val selectedIds = idsString.split(",").map { it.trim() }
-
     Column(modifier = Modifier.padding(top = 8.dp)) {
         selectedIds.forEach { id ->
             val data = platformData[id]
             if (data != null) {
                 Button(
-                    onClick = {
-                        val intent = Intent(Intent.ACTION_VIEW, data.second.toUri())
-                        context.startActivity(intent)
-                    },
+                    onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, data.second.toUri())) },
                     modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                    ),
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surfaceVariant, contentColor = MaterialTheme.colorScheme.onSurfaceVariant),
                     shape = RoundedCornerShape(8.dp)
                 ) {
                     Text(text = "Ver en ${data.first}", fontWeight = FontWeight.Medium)

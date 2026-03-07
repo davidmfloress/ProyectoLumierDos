@@ -156,4 +156,9 @@ class CineViewModel(application: Application) : AndroidViewModel(application) {
     fun updateAgeFilter(age: String) {
         _uiState.update { it.copy(selectedAgeFilter = age) }
     }
+
+    // ─── Geolocalización — guardada en ViewModel para sobrevivir rotaciones ──
+    fun updateUbicacion(lat: Double, lon: Double) {
+        _uiState.update { it.copy(geoLatitud = lat, geoLongitud = lon) }
+    }
 }

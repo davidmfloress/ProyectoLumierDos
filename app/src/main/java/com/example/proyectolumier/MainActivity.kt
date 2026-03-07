@@ -62,11 +62,20 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
+                // Pantallas donde ocultamos la topbar en landscape (tienen su propia barra compacta)
                 val shouldShowTopBar = !(isLandscape && (
                     currentRoute == CineScreen.Details.name ||
                     currentRoute == CineScreen.Categories.name ||
-                    currentRoute == CineScreen.Titles.name
+                    currentRoute == CineScreen.Titles.name ||
+                    currentRoute == CineScreen.Favoritos.name ||
+                    currentRoute == CineScreen.Geolocalizacion.name ||
+                    currentRoute == CineScreen.PeliculasOnline.name
                 )) && currentRoute != CineScreen.Login.name
+
+                // Mostramos la bottom bar en todas las pantallas excepto Login
+                // y excepto las pantallas de detalle/lista donde hay botón atrás
+                val shouldShowBottomBar = currentRoute != CineScreen.Login.name &&
+                    currentRoute != null
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
@@ -103,30 +112,7 @@ class MainActivity : ComponentActivity() {
                                     )
                                 },
                                 actions = {
-                                    // Botón películas online (Retrofit + Coil)
-                                    IconButton(onClick = {
-                                        navController.navigate(CineScreen.PeliculasOnline.name)
-                                    }) {
-                                        Icon(Icons.Default.Public, contentDescription = "Online", tint = VerdeAzulado)
-                                    }
-
-                                    // Botón Favoritos
-                                    if (uiState.isLoggedIn) {
-                                        IconButton(onClick = {
-                                            navController.navigate(CineScreen.Favoritos.name)
-                                        }) {
-                                            Icon(Icons.Default.Favorite, contentDescription = "Favoritos", tint = NetflixRed)
-                                        }
-                                    }
-
-                                    // Botón Geo
-                                    IconButton(onClick = {
-                                        navController.navigate(CineScreen.Geolocalizacion.name)
-                                    }) {
-                                        Icon(Icons.Default.LocationOn, contentDescription = "Cines cercanos", tint = VerdeAzulado)
-                                    }
-
-                                    // Menú usuario
+                                    // Menú usuario solo en topbar
                                     if (uiState.isLoggedIn) {
                                         var showUserMenu by remember { mutableStateOf(false) }
                                         Box {
@@ -158,6 +144,77 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         }
+                    },
+                    bottomBar = {
+                        // Bottom navigation — visible siempre excepto en Login
+                        // Así los botones se ven tanto en portrait como en landscape
+                        if (shouldShowBottomBar) {
+                            NavigationBar {
+                                NavigationBarItem(
+                                    selected = currentRoute == CineScreen.Categories.name,
+                                    onClick = {
+                                        navController.navigate(CineScreen.Categories.name) {
+                                            popUpTo(CineScreen.Categories.name) { inclusive = true }
+                                        }
+                                    },
+                                    icon = { Icon(Icons.Default.Home, contentDescription = "Inicio") },
+                                    label = { Text("Inicio") }
+                                )
+                                NavigationBarItem(
+                                    selected = currentRoute == CineScreen.PeliculasOnline.name,
+                                    onClick = { navController.navigate(CineScreen.PeliculasOnline.name) },
+                                    icon = { Icon(Icons.Default.Public, contentDescription = "Online", tint = VerdeAzulado) },
+                                    label = { Text("Online") }
+                                )
+                                if (uiState.isLoggedIn) {
+                                    NavigationBarItem(
+                                        selected = currentRoute == CineScreen.Favoritos.name,
+                                        onClick = { navController.navigate(CineScreen.Favoritos.name) },
+                                        icon = { Icon(Icons.Default.Favorite, contentDescription = "Favoritos", tint = NetflixRed) },
+                                        label = { Text("Favoritos") }
+                                    )
+                                }
+                                NavigationBarItem(
+                                    selected = currentRoute == CineScreen.Geolocalizacion.name,
+                                    onClick = { navController.navigate(CineScreen.Geolocalizacion.name) },
+                                    icon = { Icon(Icons.Default.LocationOn, contentDescription = "Cines cercanos") },
+                                    label = { Text("Cines") }
+                                )
+                                if (uiState.isLoggedIn) {
+                                    var showUserMenu by remember { mutableStateOf(false) }
+                                    NavigationBarItem(
+                                        selected = false,
+                                        onClick = { showUserMenu = true },
+                                        icon = {
+                                            Box {
+                                                Icon(Icons.Default.AccountCircle, contentDescription = "Perfil")
+                                                DropdownMenu(expanded = showUserMenu, onDismissRequest = { showUserMenu = false }) {
+                                                    Text(
+                                                        text = uiState.usuarioEmail ?: "",
+                                                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                                                        style = MaterialTheme.typography.labelSmall,
+                                                        color = NetflixRed
+                                                    )
+                                                    HorizontalDivider()
+                                                    DropdownMenuItem(
+                                                        text = { Text("Cerrar sesión") },
+                                                        leadingIcon = { Icon(Icons.Default.Logout, null) },
+                                                        onClick = {
+                                                            viewModel.cerrarSesion()
+                                                            showUserMenu = false
+                                                            navController.navigate(CineScreen.Login.name) {
+                                                                popUpTo(0) { inclusive = true }
+                                                            }
+                                                        }
+                                                    )
+                                                }
+                                            }
+                                        },
+                                        label = { Text("Perfil") }
+                                    )
+                                }
+                            }
+                        }
                     }
                 ) { innerPadding ->
                     val modifier = Modifier.padding(innerPadding)
@@ -167,7 +224,6 @@ class MainActivity : ComponentActivity() {
                         startDestination = CineScreen.Login.name,
                         modifier = modifier
                     ) {
-                        // LOGIN
                         composable(CineScreen.Login.name) {
                             LoginScreen(
                                 isDarkMode = darkModeActual,
@@ -180,7 +236,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // CATEGORÍAS
                         composable(CineScreen.Categories.name) {
                             CategoriaScreen(
                                 categories = uiState.categoryList,
@@ -193,7 +248,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // LISTADO
                         composable(CineScreen.Titles.name) {
                             val listaFiltradaPorEdad = if (uiState.selectedAgeFilter == "Todas") {
                                 uiState.moviesOfSelectedGenre
@@ -217,11 +271,10 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // DETALLE
                         composable(CineScreen.Details.name) {
-                            val context = LocalContext.current
                             val favoritosActuales by viewModel.favoritos.collectAsState()
                             val isFavorito = favoritosActuales.any { it.movieId == uiState.selectedMovie.id }
+                            val context = LocalContext.current
                             DetallePeliScreen(
                                 movie = uiState.selectedMovie,
                                 onBackClick = { navController.popBackStack() },
@@ -231,7 +284,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // FAVORITOS
                         composable(CineScreen.Favoritos.name) {
                             FavoritosScreen(
                                 favoritos = favoritos,
@@ -247,12 +299,13 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        // GEOLOCALIZACIÓN
                         composable(CineScreen.Geolocalizacion.name) {
-                            GeolocalizacionScreen(onBackClick = { navController.popBackStack() })
+                            GeolocalizacionScreen(
+                                onBackClick = { navController.popBackStack() },
+                                viewModel = viewModel
+                            )
                         }
 
-                        // PELÍCULAS ONLINE — Retrofit + Coil
                         composable(CineScreen.PeliculasOnline.name) {
                             PeliculasOnlineScreen(onBackClick = { navController.popBackStack() })
                         }
