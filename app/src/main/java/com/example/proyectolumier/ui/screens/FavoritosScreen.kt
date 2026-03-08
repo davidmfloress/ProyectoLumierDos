@@ -1,7 +1,6 @@
 package com.example.proyectolumier.ui.screens
 
 /**
- *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
  */
@@ -88,7 +87,7 @@ fun FavoritosScreen(
                 Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = null, modifier = Modifier.size(80.dp), tint = MaterialTheme.colorScheme.outline)
                 Spacer(modifier = Modifier.height(16.dp))
                 Text("No tienes favoritos aún", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f))
-                Text("Pulsa el ♥ en cualquier película", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.4f))
+                Text("Pulsa el ❤️ en cualquier película", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.4f))
             }
         } else if (isLandscape) {
 

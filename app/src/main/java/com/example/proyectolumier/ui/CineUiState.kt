@@ -1,8 +1,8 @@
 package com.example.proyectolumier.ui
 
 /**
-@author: David Muñoz Flores
-@author: Marco Lodeiro Ruiz De La Hermosa
+ * @author: David Muñoz Flores
+ * @author: Marco Lodeiro Ruiz De La Hermosa
  */
 
 import com.example.proyectolumier.data.model.Movie
@@ -27,7 +27,7 @@ data class CineUiState(
     // auth
     val usuarioEmail: String? = null,
     val isLoggedIn: Boolean = false,
-    // geolocalización — persiste durante la sesión aunque se rote la pantalla
+    // geolocalización
     val geoLatitud: Double? = null,
     val geoLongitud: Double? = null,
 )

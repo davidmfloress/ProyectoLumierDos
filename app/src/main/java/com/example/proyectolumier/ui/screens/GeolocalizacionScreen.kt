@@ -1,8 +1,6 @@
 package com.example.proyectolumier.ui.screens
 
 /**
-
- *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
  */
@@ -54,16 +52,16 @@ data class CineCercano(
 )
 
 private val cinesReferencia = listOf(
-    CineCercano("Cines Yelmo", 40.4168, -3.7038, "Madrid Centro"),
-    CineCercano("Cinesa La Maquinista", 41.4454, 2.1985, "Barcelona Norte"),
-    CineCercano("Odeón Multicines", 37.3891, -5.9845, "Sevilla"),
-    CineCercano("Cinesa Diagonal Mar", 41.4104, 2.2166, "Barcelona Este"),
-    CineCercano("Multicines Norte", 43.3623, -8.4115, "A Coruña"),
-    CineCercano("Kinépolis Madrid", 40.4890, -3.7226, "Madrid Norte"),
-    CineCercano("Cines Renoir", 40.4300, -3.7000, "Madrid Retiro"),
-    CineCercano("Cines Gran Casa", 41.6488, -0.8891, "Zaragoza"),
-    CineCercano("Cinesa Puerto Venecia", 41.6290, -0.9012, "Zaragoza Sur"),
-    CineCercano("Yelmo Cines Nervión", 37.3800, -5.9600, "Sevilla Este")
+    CineCercano("Kinépolis Madrid", 40.4891, -3.7226, "Parque Ocio, Pozuelo de Alarcón"),
+    CineCercano("Yelmo Cines Ideal", 40.4151, -3.7046, "C/ Doctor Cortezo, 6 - Madrid Centro"),
+    CineCercano("Cines Renoir Princesa", 40.4265, -3.7134, "C/ Martín de los Heros, 12 - Argüelles"),
+    CineCercano("Cines Palacio de la Prensa", 40.4198, -3.7031, "Plaza del Callao, 4 - Gran Vía"),
+    CineCercano("Yelmo Cines Islazul", 40.3768, -3.7387, "C/ Leganés, 2 - Carabanchel"),
+    CineCercano("Cinesa Diversia", 40.5264, -3.6313, "Diversia, Alcobendas"),
+    CineCercano("Yelmo Cines Rio Shopping", 40.3442, -3.7215, "Rio Shopping, Getafe"),
+    CineCercano("Cinesa La Gavia", 40.3880, -3.6274, "C.C. La Gavia - Vallecas"),
+    CineCercano("UCI Kineplex Arturo Soria", 40.4601, -3.6509, "Arturo Soria Plaza - Hortaleza"),
+    CineCercano("Yelmo Cines Meridiana", 40.4053, -3.6891, "C.C. Meridiana - Puente de Vallecas")
 )
 
 fun distanciaKm(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
@@ -88,10 +86,8 @@ fun GeolocalizacionScreen(
 
     val fusedLocationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
 
-
     var isLoading by remember { mutableStateOf(false) }
     var errorMsg by remember { mutableStateOf<String?>(null) }
-
 
     val latitudUsuario = uiState.geoLatitud
     val longitudUsuario = uiState.geoLongitud
@@ -130,7 +126,6 @@ fun GeolocalizacionScreen(
         } else emptyList()
     }
 
-
     val ubicacionCard: @Composable () -> Unit = {
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -145,7 +140,7 @@ fun GeolocalizacionScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 if (latitudUsuario != null) {
-                    Text("📍 Ubicación obtenida", style = MaterialTheme.typography.titleMedium, color = VerdeAzulado, fontWeight = FontWeight.Bold)
+                    Text("Ubicación obtenida", style = MaterialTheme.typography.titleMedium, color = VerdeAzulado, fontWeight = FontWeight.Bold)
                     Text(
                         "Lat: ${"%.4f".format(latitudUsuario)}  |  Lon: ${"%.4f".format(longitudUsuario)}",
                         style = MaterialTheme.typography.bodySmall,
@@ -188,7 +183,6 @@ fun GeolocalizacionScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-
         Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface, shadowElevation = 2.dp) {
             Row(
                 modifier = Modifier.padding(if (isLandscape) 4.dp else 8.dp),
@@ -208,7 +202,6 @@ fun GeolocalizacionScreen(
         }
 
         if (isLandscape && cinesOrdenados.isNotEmpty()) {
-
             Row(
                 modifier = Modifier.fillMaxSize().padding(12.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -244,7 +237,6 @@ fun GeolocalizacionScreen(
                 }
             }
         } else {
-
             Column(
                 modifier = Modifier.fillMaxSize().padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally

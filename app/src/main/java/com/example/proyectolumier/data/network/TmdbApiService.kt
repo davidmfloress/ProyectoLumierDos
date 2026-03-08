@@ -10,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-// API Key pública de TMDB (demo key) ya no es demo
 private const val TMDB_API_KEY = "a924644d43b41d998ff5a45d79d350d3"
 private const val BASE_URL = "https://api.themoviedb.org/3/"
 
@@ -37,7 +36,6 @@ interface TmdbApiService {
     ): TmdbMovieResponse
 }
 
-// Singleton de Retrofit
 object TmdbApi {
     val retrofitService: TmdbApiService by lazy {
         Retrofit.Builder()

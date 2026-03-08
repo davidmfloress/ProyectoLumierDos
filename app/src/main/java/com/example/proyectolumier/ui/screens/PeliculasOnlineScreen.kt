@@ -1,9 +1,8 @@
 package com.example.proyectolumier.ui.screens
 
 /**
- *
  * @author: David Muñoz Flores
- * @author: Marco Lodeiro Ruiz De La Hermosa<<<<<<
+ * @author: Marco Lodeiro Ruiz De La Hermosa
  */
 
 import android.content.res.Configuration

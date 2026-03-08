@@ -1,7 +1,6 @@
 package com.example.proyectolumier.data.network
 
 /**
- *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
  */
@@ -22,7 +21,6 @@ data class TmdbMovie(
     @SerializedName("vote_average") val voteAverage: Double = 0.0,
     @SerializedName("genre_ids") val genreIds: List<Int> = emptyList()
 ) {
-    // URL completa del poster para Coil
     val posterUrl: String
         get() = if (posterPath != null) "https://image.tmdb.org/t/p/w500$posterPath" else ""
 }

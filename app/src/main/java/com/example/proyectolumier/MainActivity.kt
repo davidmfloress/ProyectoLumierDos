@@ -1,8 +1,8 @@
 package com.example.proyectolumier
 
 /**
-@author: David Muñoz Flores
-@author: Marco Lodeiro Ruiz De La Hermosa
+ * @author: David Muñoz Flores
+ * @author: Marco Lodeiro Ruiz De La Hermosa
  */
 
 import android.content.res.Configuration

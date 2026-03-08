@@ -1,7 +1,6 @@
 package com.example.proyectolumier.data.repository
 
 /**
- *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
  */
@@ -9,7 +8,6 @@ package com.example.proyectolumier.data.repository
 import com.example.proyectolumier.data.network.TmdbApi
 import com.example.proyectolumier.data.network.TmdbMovie
 
-// Sealed class de estados de red - Unidad 5 Pathway 1
 sealed interface NetworkUiState {
     data class Success(val movies: List<TmdbMovie>) : NetworkUiState
     data class Error(val message: String) : NetworkUiState

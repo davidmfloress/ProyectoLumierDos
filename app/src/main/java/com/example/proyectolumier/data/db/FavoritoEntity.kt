@@ -1,7 +1,6 @@
 package com.example.proyectolumier.data.db
 
 /**
- *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
  */

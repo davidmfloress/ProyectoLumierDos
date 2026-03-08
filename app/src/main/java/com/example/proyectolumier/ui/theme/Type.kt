@@ -1,8 +1,8 @@
 package com.example.proyectolumier.ui.theme
 
 /**
-@author: David Muñoz Flores
-@author: Marco Lodeiro Ruiz De La Hermosa
+ * @author: David Muñoz Flores
+ * @author: Marco Lodeiro Ruiz De La Hermosa
  */
 
 import androidx.compose.material3.Typography
