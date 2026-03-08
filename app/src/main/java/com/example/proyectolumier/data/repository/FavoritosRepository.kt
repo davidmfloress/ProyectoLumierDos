@@ -1,7 +1,6 @@
 package com.example.proyectolumier.data.repository
 
 /**
- * Repositorio que abstrae las operaciones de la BD Room para favoritos.
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa

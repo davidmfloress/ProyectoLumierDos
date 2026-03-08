@@ -62,7 +62,6 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
-                // Pantallas donde ocultamos la topbar en landscape (tienen su propia barra compacta)
                 val shouldShowTopBar = !(isLandscape && (
                     currentRoute == CineScreen.Details.name ||
                     currentRoute == CineScreen.Categories.name ||
@@ -72,8 +71,6 @@ class MainActivity : ComponentActivity() {
                     currentRoute == CineScreen.PeliculasOnline.name
                 )) && currentRoute != CineScreen.Login.name
 
-                // Mostramos la bottom bar en todas las pantallas excepto Login
-                // y excepto las pantallas de detalle/lista donde hay botón atrás
                 val shouldShowBottomBar = currentRoute != CineScreen.Login.name &&
                     currentRoute != null
 
@@ -112,7 +109,6 @@ class MainActivity : ComponentActivity() {
                                     )
                                 },
                                 actions = {
-                                    // Menú usuario solo en topbar
                                     if (uiState.isLoggedIn) {
                                         var showUserMenu by remember { mutableStateOf(false) }
                                         Box {
@@ -146,8 +142,6 @@ class MainActivity : ComponentActivity() {
                         }
                     },
                     bottomBar = {
-                        // Bottom navigation — visible siempre excepto en Login
-                        // Así los botones se ven tanto en portrait como en landscape
                         if (shouldShowBottomBar) {
                             NavigationBar {
                                 NavigationBarItem(

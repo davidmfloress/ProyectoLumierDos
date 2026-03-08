@@ -1,9 +1,7 @@
 package com.example.proyectolumier.ui.screens
 
 /**
- * Pantalla de geolocalización que obtiene la ubicación del usuario
- * y muestra cines cercanos con su distancia aproximada.
- * El estado de ubicación vive en el ViewModel para sobrevivir rotaciones de pantalla.
+
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
@@ -90,11 +88,11 @@ fun GeolocalizacionScreen(
 
     val fusedLocationClient = remember { LocationServices.getFusedLocationProviderClient(context) }
 
-    // Estado local solo para loading/error (no necesitan sobrevivir a rotación)
+
     var isLoading by remember { mutableStateOf(false) }
     var errorMsg by remember { mutableStateOf<String?>(null) }
 
-    // La ubicación viene del ViewModel — sobrevive rotaciones
+
     val latitudUsuario = uiState.geoLatitud
     val longitudUsuario = uiState.geoLongitud
 
@@ -132,7 +130,7 @@ fun GeolocalizacionScreen(
         } else emptyList()
     }
 
-    // Tarjeta de ubicación reutilizable
+
     val ubicacionCard: @Composable () -> Unit = {
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -190,7 +188,7 @@ fun GeolocalizacionScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // TopBar
+
         Surface(modifier = Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surface, shadowElevation = 2.dp) {
             Row(
                 modifier = Modifier.padding(if (isLandscape) 4.dp else 8.dp),
@@ -210,7 +208,7 @@ fun GeolocalizacionScreen(
         }
 
         if (isLandscape && cinesOrdenados.isNotEmpty()) {
-            // LANDSCAPE con resultados: tarjeta de ubicación a la izquierda, lista a la derecha
+
             Row(
                 modifier = Modifier.fillMaxSize().padding(12.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
@@ -246,7 +244,7 @@ fun GeolocalizacionScreen(
                 }
             }
         } else {
-            // PORTRAIT o landscape sin resultados: layout vertical
+
             Column(
                 modifier = Modifier.fillMaxSize().padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally

@@ -62,7 +62,7 @@ fun LoginScreen(
         auth.currentUser?.let { onLoginSuccess(it.email ?: "") }
     }
 
-    // Contenido del formulario como lambda reutilizable
+
     val formContent: @Composable ColumnScope.() -> Unit = {
         OutlinedTextField(
             value = email,
@@ -163,7 +163,6 @@ fun LoginScreen(
     val logoRes = if (isDarkMode) R.drawable.logolumiernigga else R.drawable.logolumiernormal
 
     if (isLandscape) {
-        // LANDSCAPE: logo a la izquierda, formulario a la derecha con scroll
         Row(
             modifier = modifier
                 .fillMaxSize()
@@ -172,7 +171,6 @@ fun LoginScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(32.dp)
         ) {
-            // Columna izquierda: logo + título
             Column(
                 modifier = Modifier.weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -193,7 +191,6 @@ fun LoginScreen(
                 )
             }
 
-            // Columna derecha: formulario con scroll
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -204,7 +201,6 @@ fun LoginScreen(
             }
         }
     } else {
-        // PORTRAIT: layout vertical clásico con scroll
         Column(
             modifier = modifier
                 .fillMaxSize()

@@ -1,9 +1,6 @@
 package com.example.proyectolumier.data.datastore
 
 /**
- * Gestión de preferencias persistentes con DataStore.
- * Guarda el modo oscuro entre sesiones.
- * Unidad 6 - Pathway 3: DataStore para almacenar datos con claves
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
@@ -31,13 +28,13 @@ class LumierPreferencesRepository(private val context: Context) {
         val LAST_USER_KEY = stringPreferencesKey("last_user_email")
     }
 
-    // Flow del modo oscuro — se actualiza automáticamente al cambiar
+
     val darkModeFlow: Flow<Boolean?> = context.dataStore.data.map { preferences ->
         val isSet = preferences[DARK_MODE_SET_KEY] ?: false
         if (isSet) preferences[DARK_MODE_KEY] else null
     }
 
-    // Guardar preferencia de modo oscuro
+
     suspend fun saveDarkMode(isDark: Boolean?) {
         context.dataStore.edit { preferences ->
             if (isDark == null) {
@@ -50,7 +47,7 @@ class LumierPreferencesRepository(private val context: Context) {
         }
     }
 
-    // Guardar último usuario logueado
+
     suspend fun saveLastUser(email: String) {
         context.dataStore.edit { preferences ->
             preferences[LAST_USER_KEY] = email

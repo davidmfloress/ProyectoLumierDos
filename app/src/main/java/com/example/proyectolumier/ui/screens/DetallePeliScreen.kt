@@ -121,8 +121,6 @@ fun DetallePeliScreen(
                     .fillMaxSize()
                     .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
-                // La altura manda: el vídeo nunca supera el 90% de la altura disponible
-                // El ancho se deriva de la altura manteniendo 16:9 exacto
                 val videoHeight = maxHeight * 0.90f
                 val videoWidth  = videoHeight * 16f / 9f
 

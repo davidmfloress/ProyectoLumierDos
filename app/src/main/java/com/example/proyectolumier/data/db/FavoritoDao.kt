@@ -1,7 +1,6 @@
 package com.example.proyectolumier.data.db
 
 /**
- * DAO (Data Access Object) para operaciones CRUD sobre la tabla de favoritos.
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa

@@ -1,8 +1,6 @@
 package com.example.proyectolumier.data.db
 
-/**
- * Base de datos Room de la aplicación Lumier.
- * Singleton que gestiona la instancia única de la BD local.
+/**.
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa

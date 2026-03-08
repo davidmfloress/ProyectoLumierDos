@@ -1,7 +1,6 @@
 package com.example.proyectolumier.ui.screens
 
 /**
- * Pantalla que muestra las películas favoritas del usuario guardadas en Room.
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
@@ -51,7 +50,7 @@ fun FavoritosScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // Barra superior — compacta en landscape
+
         Surface(
             modifier = Modifier.fillMaxWidth(),
             color = MaterialTheme.colorScheme.surface,
@@ -92,7 +91,7 @@ fun FavoritosScreen(
                 Text("Pulsa el ♥ en cualquier película", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.4f))
             }
         } else if (isLandscape) {
-            // LANDSCAPE: grid de 2 columnas para aprovechar el ancho
+
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier.fillMaxSize(),
@@ -112,7 +111,7 @@ fun FavoritosScreen(
                 }
             }
         } else {
-            // PORTRAIT: lista vertical
+
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),

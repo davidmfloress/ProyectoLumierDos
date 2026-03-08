@@ -1,8 +1,6 @@
 package com.example.proyectolumier.data.repository
 
 /**
- * Repositorio para llamadas de red a TMDB.
- * Gestiona los estados Loading / Success / Error según Unidad 5.
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa

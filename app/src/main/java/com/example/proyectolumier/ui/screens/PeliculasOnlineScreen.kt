@@ -1,12 +1,9 @@
 package com.example.proyectolumier.ui.screens
 
 /**
- * Pantalla que carga películas populares desde la API de TMDB usando Retrofit,
- * y muestra sus posters con Coil (AsyncImage).
- * Unidad 5 - Pathway 1 (Retrofit) + Pathway 2 (Coil)
  *
  * @author: David Muñoz Flores
- * @author: Marco Lodeiro Ruiz De La Hermosa
+ * @author: Marco Lodeiro Ruiz De La Hermosa<<<<<<
  */
 
 import android.content.res.Configuration
@@ -76,7 +73,6 @@ fun PeliculasOnlineScreen(
     val vm: PeliculasOnlineViewModel = viewModel()
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-    // En landscape más columnas para aprovechar el espacio
     val columnCount = if (isLandscape) 4 else 2
 
     Column(
@@ -109,7 +105,6 @@ fun PeliculasOnlineScreen(
             }
         }
 
-        // Chips selector — en landscape más compactos
         Row(
             modifier = Modifier
                 .fillMaxWidth()

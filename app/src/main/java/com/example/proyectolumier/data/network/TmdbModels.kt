@@ -1,9 +1,6 @@
 package com.example.proyectolumier.data.network
 
 /**
- * Modelos de datos para la API de TMDB (The Movie Database).
- * Usados con Retrofit para obtener datos de películas desde internet.
- * Unidad 5 - Pathway 1: Obtener datos de internet con Retrofit
  *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa

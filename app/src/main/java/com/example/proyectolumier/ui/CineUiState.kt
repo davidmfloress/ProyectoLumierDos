@@ -31,4 +31,3 @@ data class CineUiState(
     val geoLatitud: Double? = null,
     val geoLongitud: Double? = null,
 )
-// Nota: añadir estos campos al data class CineUiState existente

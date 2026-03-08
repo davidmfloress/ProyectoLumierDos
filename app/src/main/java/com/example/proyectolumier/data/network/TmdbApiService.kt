@@ -1,9 +1,6 @@
 package com.example.proyectolumier.data.network
 
 /**
- * Interfaz Retrofit para llamadas a la API de TMDB.
- * Unidad 5 - Pathway 1: API REST con Retrofit + Corrutinas
- *
  * @author: David Muñoz Flores
  * @author: Marco Lodeiro Ruiz De La Hermosa
  */
